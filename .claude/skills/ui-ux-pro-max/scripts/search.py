@@ -39,6 +39,12 @@ def format_output(result):
 
 
 if __name__ == "__main__":
+    import sys
+    import io
+    # Fix Windows console encoding for Unicode output
+    if sys.platform == "win32":
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+
     parser = argparse.ArgumentParser(description="UI Pro Max Search")
     parser.add_argument("query", help="Search query")
     parser.add_argument("--domain", "-d", choices=list(CSV_CONFIG.keys()), help="Search domain")
