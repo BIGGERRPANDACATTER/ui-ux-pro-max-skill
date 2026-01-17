@@ -28,6 +28,24 @@ export function detectAIType(cwd: string = process.cwd()): DetectionResult {
   if (existsSync(join(cwd, '.kiro'))) {
     detected.push('kiro');
   }
+  if (existsSync(join(cwd, '.codex'))) {
+    detected.push('codex');
+  }
+  if (existsSync(join(cwd, '.roo'))) {
+    detected.push('roocode');
+  }
+  if (existsSync(join(cwd, '.qoder'))) {
+    detected.push('qoder');
+  }
+  if (existsSync(join(cwd, '.gemini'))) {
+    detected.push('gemini');
+  }
+  if (existsSync(join(cwd, '.trae'))) {
+    detected.push('trae');
+  }
+  if (existsSync(join(cwd, '.opencode'))) {
+    detected.push('opencode');
+  }
 
   // Suggest based on what's detected
   let suggested: AIType | null = null;
@@ -54,6 +72,18 @@ export function getAITypeDescription(aiType: AIType): string {
       return 'GitHub Copilot (.github/prompts/ + .shared/)';
     case 'kiro':
       return 'Kiro (.kiro/steering/ + .shared/)';
+    case 'codex':
+      return 'Codex (.codex/skills/)';
+    case 'roocode':
+      return 'RooCode (.roo/commands/ + .shared/)';
+    case 'qoder':
+      return 'Qoder (.qoder/rules/ + .shared/)';
+    case 'gemini':
+      return 'Gemini CLI (.gemini/skills/ + .shared/)';
+    case 'trae':
+      return 'Trae (.trae/skills/ + .shared/)';
+    case 'opencode':
+      return 'OpenCode (.opencode/skills/ + .shared/)';
     case 'all':
       return 'All AI assistants';
   }
